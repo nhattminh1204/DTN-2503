@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PhuongPhapTinh:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PhuongPhapTinh_jar</output-path>
+    <root id="archive" name="PhuongPhapTinh.jar">
+      <element id="module-output" name="PhuongPhapTinh" />
+      <element id="module-test-output" name="PhuongPhapTinh" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/objecthunter/exp4j/0.4.8/exp4j-0.4.8.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

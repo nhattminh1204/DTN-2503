@@ -1,0 +1,15 @@
+com\vti\final24072023\entity\Role.class
+com\vti\final24072023\backend\datalayer\CandidateRepository.class
+com\vti\final24072023\frontend\Function.class
+com\vti\final24072023\utils\JDBCUtils.class
+com\vti\final24072023\backend\businesslayer\ICandidateService.class
+com\vti\final24072023\entity\GraduationRank.class
+com\vti\final24072023\backend\presentationlayer\CandidateController.class
+com\vti\final24072023\utils\ScannerUtils.class
+com\vti\final24072023\frontend\Program.class
+com\vti\final24072023\App.class
+com\vti\final24072023\entity\ExperienceCandidate.class
+com\vti\final24072023\backend\datalayer\ICandidateRepository.class
+com\vti\final24072023\entity\Candidate.class
+com\vti\final24072023\backend\businesslayer\CandidateService.class
+com\vti\final24072023\entity\FresherCandidate.class

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: Day4ModelMapperMapstruct
+  datasource:
+    url: jdbc:mysql://localhost:3306/dtn_day4?createDatabaseIfNotExist=true
+    user: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
