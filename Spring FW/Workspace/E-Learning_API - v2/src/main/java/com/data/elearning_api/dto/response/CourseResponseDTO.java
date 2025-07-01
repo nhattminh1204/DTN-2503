@@ -11,5 +11,6 @@ public class CourseResponseDTO {
     String name;
     int sessions;
     int hours;
-    int categoryId;
+    Integer categoryId;
+    Integer certificateId;
 }

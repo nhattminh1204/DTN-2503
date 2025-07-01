@@ -45,6 +45,7 @@ public class CourseController {
         Course created = courseService.create(dto);
         return new ResponseEntity<>(modelMapper.map(created, CourseResponseDTO.class), HttpStatus.CREATED);
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable int id, @Valid @RequestBody CourseUpdateDTO dto) {
         Course updated = courseService.update(id, dto);

@@ -3,16 +3,17 @@ package com.data.elearning_api.service;
 import com.data.elearning_api.dto.request.CourseCreateDTO;
 import com.data.elearning_api.dto.request.CourseUpdateDTO;
 import com.data.elearning_api.entity.Category;
+import com.data.elearning_api.entity.Certificate;
 import com.data.elearning_api.entity.Course;
 import com.data.elearning_api.exception.AppException;
 import com.data.elearning_api.exception.ErrorCode;
 import com.data.elearning_api.repository.CategoryRepository;
+import com.data.elearning_api.repository.CertificateRepository;
 import com.data.elearning_api.repository.CourseRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class CourseServiceImpl implements CourseService {
 
     CourseRepository courseRepo;
     CategoryRepository categoryRepo;
+    CertificateRepository certificateRepo;
     ModelMapper modelMapper;
 
     @Override
@@ -47,15 +49,24 @@ public class CourseServiceImpl implements CourseService {
         Category category = categoryRepo.findById(dto.getCategoryId())
                 .orElseThrow(() -> new AppException(ErrorCode.CATEGORY_NOT_FOUND));
 
+        Certificate certificate = null;
+        if (dto.getCertificateId() != 0) {
+            certificate = certificateRepo.findById(dto.getCertificateId())
+                    .orElseThrow(() -> new AppException(ErrorCode.CERTIFICATE_NOT_FOUND));
+        }
+
         Course course = new Course();
         course.setName(dto.getName());
         course.setSessions(dto.getSessions());
         course.setHours(dto.getHours());
+        course.setDescription(dto.getDescription());
         course.setCategory(category);
+        course.setCertificate(certificate);
         course.setLessons(new ArrayList<>());
 
         return courseRepo.save(course);
     }
+
 
     @Override
     public Course update(int id, CourseUpdateDTO dto) {
@@ -64,14 +75,22 @@ public class CourseServiceImpl implements CourseService {
         Category category = categoryRepo.findById(dto.getCategoryId())
                 .orElseThrow(() -> new AppException(ErrorCode.CATEGORY_NOT_FOUND));
 
-        existing.setName(dto.getName());
-        existing.setHours(dto.getHours());
-        existing.setSessions(dto.getSessions());
+        Certificate certificate = null;
+        if (dto.getCertificateId() != 0) {
+            certificate = certificateRepo.findById(dto.getCertificateId())
+                    .orElseThrow(() -> new AppException(ErrorCode.CERTIFICATE_NOT_FOUND));
+        }
 
+        existing.setName(dto.getName());
+        existing.setSessions(dto.getSessions());
+        existing.setHours(dto.getHours());
+        existing.setDescription(dto.getDescription());
         existing.setCategory(category);
+        existing.setCertificate(certificate);
 
         return courseRepo.save(existing);
     }
+
 
     @Override
     public boolean delete(int id) {
@@ -80,12 +99,13 @@ public class CourseServiceImpl implements CourseService {
         if (!course.getLessons().isEmpty())
             throw new AppException(ErrorCode.COURSE_HAS_LESSONS);
 
-        if (!course.getCertificates().isEmpty())
+        if (course.getCertificate() != null)
             throw new AppException(ErrorCode.COURSE_HAS_CERTIFICATES);
 
         courseRepo.delete(course);
         return true;
     }
+
 
     @Override
     public List<Course> search(String keyword) {

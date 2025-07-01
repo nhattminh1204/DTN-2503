@@ -24,29 +24,29 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 50)
     String username;
 
     @Column(nullable = false, length = 100)
     String password;
 
+    @Column(nullable = false, unique = true)
+    String email;
+
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
     ROLE role;
 
-    @Column(nullable = false)
-    String email;
-
-    @Column(name = "create_at", nullable = false)
-    LocalDateTime createAt;
-
-    @Column(name = "update_at", nullable = false)
-    LocalDateTime updateAt;
+    String address;
 
     @Column(name = "date_of_birth")
     LocalDate dateOfBirth;
 
-    String address;
+    @Column(name = "create_at", nullable = false, updatable = false)
+    LocalDateTime createAt;
+
+    @Column(name = "update_at", nullable = false)
+    LocalDateTime updateAt;
 
     @PrePersist
     private void onCreate() {

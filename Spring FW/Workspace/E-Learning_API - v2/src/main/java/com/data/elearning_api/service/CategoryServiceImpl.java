@@ -10,7 +10,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +35,9 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category create(CategoryCreateDTO dto) {
+        if (categoryRepo.existsByName(dto.getName())) {
+            throw new AppException(ErrorCode.CATEGORY_NAME_EXISTS);
+        }
         Category category = modelMapper.map(dto, Category.class);
         return categoryRepo.save(category);
     }
@@ -43,6 +45,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category update(int id, CategoryUpdateDTO dto) {
         Category category = getById(id);
+
+        if (!category.getName().equals(dto.getName()) && categoryRepo.existsByName(dto.getName())) {
+            throw new AppException(ErrorCode.CATEGORY_NAME_EXISTS);
+        }
+
         modelMapper.map(dto, category);
         return categoryRepo.save(category);
     }

@@ -26,7 +26,7 @@ public class Lesson {
     String description;
 
     @Column(nullable = false)
-    int duration = 0; // Số giờ
+    int duration = 0;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", nullable = false)

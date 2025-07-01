@@ -5,8 +5,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
-import java.util.Locale;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,17 +20,11 @@ public class Certificate {
     @Column(nullable = false)
     CertificateType type;
 
-    @Column(nullable = false)
-    double score;
+    @Column(length = 255)
+    String description;
 
-    @Column(name = "issue_date", nullable = false)
-    LocalDate issueDate;
+    @OneToMany(mappedBy = "certificate", fetch = FetchType.LAZY
+            , cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Course> courses;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_id", nullable = false)
-    Account account;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", nullable = false)
-    Course course;
 }

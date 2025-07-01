@@ -5,15 +5,11 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CertificateDTO {
+public class CertificateResponseDTO {
     int id;
     CertificateType type;
-    double score;
-    LocalDate issueDate;
-    int accountId;
-    int courseId;
 }

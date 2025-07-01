@@ -9,7 +9,7 @@ import java.util.List;
 public interface CertificateService {
     List<Certificate> getAll();
     Certificate getById(int id);
-    Certificate create(int courseId, CertificateCreateDTO dto);
-    Certificate update(int id, int courseId, CertificateUpdateDTO dto);
+    Certificate create(CertificateCreateDTO dto);
+    Certificate update(int id, CertificateUpdateDTO dto);
     boolean delete(int id);
 }

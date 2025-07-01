@@ -1,7 +1,6 @@
 package com.data.elearning_api.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +18,7 @@ import java.util.List;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    int id;
 
     @Column(nullable = false, length = 100, unique = true)
     String name;
@@ -30,13 +29,18 @@ public class Course {
     @Column(nullable = false)
     int hours = 0;
 
+    @Column(length = 1000)
+    String description;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     Category category;
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    List<Lesson> lessons;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "certificate_id")
+    Certificate certificate;
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    List<Certificate> certificates;
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY
+            , cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Lesson> lessons;
 }

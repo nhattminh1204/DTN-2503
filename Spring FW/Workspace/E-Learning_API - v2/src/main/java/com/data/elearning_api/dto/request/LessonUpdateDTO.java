@@ -15,6 +15,7 @@ public class LessonUpdateDTO {
     @Size(min = 3, max = 200)
     String title;
 
+    @Size(max = 1000, message = "DESCRIPTION_TOO_LONG")
     String description;
 
     @Min(0)

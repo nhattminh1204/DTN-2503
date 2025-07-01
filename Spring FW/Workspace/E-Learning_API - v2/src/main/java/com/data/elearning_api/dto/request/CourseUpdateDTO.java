@@ -14,6 +14,9 @@ public class CourseUpdateDTO {
     @Size(min = 2, max = 100, message = "INVALID_COURSE_NAME")
     String name;
 
+    @Size(max = 1000, message = "DESCRIPTION_TOO_LONG")
+    String description;
+
     @Min(value = 0, message = "INVALID_SESSION_COUNT")
     int sessions = 0;
 
@@ -21,4 +24,6 @@ public class CourseUpdateDTO {
     int hours = 0;
 
     int categoryId;
+
+    int certificateId;
 }

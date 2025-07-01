@@ -24,6 +24,7 @@ public class Category {
     @Column(unique = true, nullable = false)
     String name;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY
+            , cascade = CascadeType.ALL)
     List<Course> courses;
 }
