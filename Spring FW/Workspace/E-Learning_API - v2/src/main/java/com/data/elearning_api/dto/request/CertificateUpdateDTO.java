@@ -1,8 +1,5 @@
 package com.data.elearning_api.dto.request;
 
-import com.data.elearning_api.entity.CertificateType;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
@@ -13,7 +10,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CertificateUpdateDTO {
     @NotNull(message = "CERTIFICATE_TYPE_REQUIRED")
-    CertificateType type;
+    String type;
 
     @Size(max = 255)
     String description;

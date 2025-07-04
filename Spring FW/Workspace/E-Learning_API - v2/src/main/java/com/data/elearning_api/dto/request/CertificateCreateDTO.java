@@ -1,6 +1,5 @@
 package com.data.elearning_api.dto.request;
 
-import com.data.elearning_api.entity.CertificateType;
 import jakarta.validation.constraints.*;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -10,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CertificateCreateDTO {
     @NotNull(message = "CERTIFICATE_TYPE_REQUIRED")
-    CertificateType type;
+    String type;
 
     @Size(max = 255)
     String description;

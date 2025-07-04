@@ -2,22 +2,16 @@ package com.data.elearning_api.service;
 
 import com.data.elearning_api.dto.request.CertificateCreateDTO;
 import com.data.elearning_api.dto.request.CertificateUpdateDTO;
-import com.data.elearning_api.entity.Account;
 import com.data.elearning_api.entity.Certificate;
-import com.data.elearning_api.entity.CertificateType;
-import com.data.elearning_api.entity.Course;
 import com.data.elearning_api.exception.AppException;
 import com.data.elearning_api.exception.ErrorCode;
-import com.data.elearning_api.repository.AuthRepository;
 import com.data.elearning_api.repository.CertificateRepository;
-import com.data.elearning_api.repository.CourseRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service

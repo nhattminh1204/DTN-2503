@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: Day07_Thymeleaf
+  profiles:
+    active: dev

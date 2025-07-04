@@ -30,4 +30,6 @@ public class Account {
     @Column(name = "email", unique = true, nullable = false
             , columnDefinition = "VARCHAR(100)")
     String email;
+
+    String role;
 }

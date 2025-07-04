@@ -6,11 +6,11 @@ INSERT INTO category (id, name) VALUES
 
 -- ACCOUNT
 INSERT INTO account (id, username, password, role, email, create_at, update_at, date_of_birth, address) VALUES
-(1, 'admin', '123', 'ADMIN', 'admin@gmail.com', '2024-01-01T08:00:00', '2024-01-01T08:00:00', '1990-01-01', 'Hà Nội'),
-(2, 'alice', '123', 'USER', 'alice@gmail.com', '2024-01-01T08:00:00', '2024-01-01T08:00:00', '1995-02-15', 'Hà Nội'),
-(3, 'bob', '123', 'USER', 'bob@gmail.com', '2024-01-01T08:00:00', '2024-01-01T08:00:00', '1996-03-20', 'TP.HCM'),
-(4, 'charlie', '123', 'USER', 'charlie@gmail.com', '2024-01-01T08:00:00', '2024-01-01T08:00:00', '1997-04-10', 'Đà Nẵng'),
-(5, 'david', '123', 'USER', 'david@gmail.com', '2024-01-01T08:00:00', '2024-01-01T08:00:00', '1998-05-05', 'Cần Thơ');
+(1, 'admin', '$2a$12$eyqL0tpiYkp.hLalJ9tqqOsanRvkoxmCbfLlv1wZIzXmN/tq8tXIC', 'ADMIN', 'admin@gmail.com', '2024-01-01T08:00:00', '2024-01-01T08:00:00', '1990-01-01', 'Hà Nội'),
+(2, 'alice', '$2a$12$gcnWbd55yFFdhGdC4uVxyuX35.f7s7G2G3a/ipztQQEPrRf9yc3Au', 'USER', 'alice@gmail.com', '2024-01-01T08:00:00', '2024-01-01T08:00:00', '1995-02-15', 'Hà Nội'),
+(3, 'bob', '$2a$12$6vW6MzBR1zJgt4L2wci4n.KZS1ukZ/vhVfD6qlPNYvekWjY2j3jYO', 'USER', 'bob@gmail.com', '2024-01-01T08:00:00', '2024-01-01T08:00:00', '1996-03-20', 'TP.HCM'),
+(4, 'charlie', '$2a$12$MxkR6mZTe56D4hv0AZ4ADuCJFBloeWDo3sIMvMeJujgFESfxHQlYS', 'USER', 'charlie@gmail.com', '2024-01-01T08:00:00', '2024-01-01T08:00:00', '1997-04-10', 'Đà Nẵng'),
+(5, 'david', '$2a$12$8OLyQ80Jl7wFQd8kkjqwjud/FaS94dfIz28qRxCdxdsvi4TaqNN6y', 'USER', 'david@gmail.com', '2024-01-01T08:00:00', '2024-01-01T08:00:00', '1998-05-05', 'Cần Thơ');
 
 -- CERTIFICATE
 INSERT INTO certificate (id, type) VALUES

@@ -13,6 +13,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,6 +24,7 @@ public class AuthServiceImpl implements AuthService {
     AuthRepository authRepository;
     JwtUtil jwtUtil;
     ModelMapper modelMapper;
+    PasswordEncoder passwordEncoder;
 
     @Override
     public AuthResponse register(RegisterRequest request) {
@@ -32,6 +34,7 @@ public class AuthServiceImpl implements AuthService {
         }
 
         Account account = modelMapper.map(request, Account.class);
+        account.setPassword(passwordEncoder.encode(request.getPassword()));
         account.setRole(ROLE.USER);
 
         Account saved = authRepository.save(account);
@@ -45,7 +48,7 @@ public class AuthServiceImpl implements AuthService {
         Account user = authRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new AppException(ErrorCode.INVALID_CREDENTIALS));
 
-        if (!request.getPassword().equals(user.getPassword())) {
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new AppException(ErrorCode.INVALID_CREDENTIALS);
         }
 

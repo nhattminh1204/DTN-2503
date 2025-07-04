@@ -16,9 +16,8 @@ public class Certificate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    CertificateType type;
+    @Column(nullable = false, length = 50)
+    String type;
 
     @Column(length = 255)
     String description;
