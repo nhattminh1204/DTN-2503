@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/webjars/font-awesome/5.15.4/css/all.css" rel="stylesheet"/>
+    <script src="/webjars/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <h4>Danh sách sản phẩm</h4>
+    <a href="/product/add" class="btn btn-primary btn-sm me-2">
+        <i class="fas fa-plus"></i> Thêm
+    </a>
+
+    <a href="/product/send-email" class="btn btn-success btn-sm">
+        <i class="fas fa-envelope"></i> Gửi Email
+    </a>
+
+    <table class="table table-bordered table-striped table-hover">
+
+        <thead>
+            <tr>
+                <td>No. </td>
+                <td>ID</td>
+                <td>Tên</td>
+                <td>Giá</td>
+                <td>Mô Tả</td>
+                <td>Loại Giá</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="obj, loop : ${products}">
+                <td th:text="${loop.index + 1}">No.</td>
+                <td th:text="${obj.id}">Id</td>
+                <td th:text="${obj.productName}">Name</td>
+                <td th:text="${obj.price}">Price</td>
+                <td th:text="${obj.description}">Description</td>
+
+                <td>
+                    <span th:if="${obj.price > 10000}" class="badge bg-warning">Giá cao</span>
+                    <span th:if="${obj.price <= 10000}" class="badge bg-info">Giá thấp</span>
+                </td>
+
+                <td>
+                    <a th:href="${'/product/delete/' + obj.id}" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i> Xóa
+                    </a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
